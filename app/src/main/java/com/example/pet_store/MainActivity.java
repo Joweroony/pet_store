@@ -1,20 +1,20 @@
 package com.example.pet_store;
 
-import static java.lang.System.load;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.squareup.picasso.Picasso;
 
-import java.time.Instant;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     EditText editText;
     ImageView imageView;
-    private Instant Picasso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://petstore.swagger.io/v2/pet")
+                .baseUrl("https://petstore.swagger.io/v2/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         api jsonapi = retrofit.create(api.class);
-            Call<Pet> call = (Call<Pet>) jsonapi.getPetId(path);
-            call.enqueue(new Callback<Pet>() {
+        Call<Pet> call = jsonapi.getPetId(path);
+        call.enqueue(new Callback<Pet>() {
                 @Override
                 public void onResponse(Call<Pet> call, Response<Pet> response) {
                     if (!response.isSuccessful()) {
@@ -56,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     Pet pet = response.body();
-                    Category category = pet.getCategoryName();
-                    List<Tag> tagList = pet.getTagName();
+                    Category category = pet.getName();
+                    List<Tag> tagList = Tag.();
                     Tag tag = tagList.get(0);
                     String text = "";
                     text += "Pet name: " + String.valueOf(pet.getName()) +
-                            "\nPet ID is: " + String.valueOf(pet.getTagId()) +
-                            "\nPet type is: " + String.valueOf(pet.getCategoryName()) +
-                            "\nPet Starus is: "+ String.valueOf(pet.getPetStatus());
+                            "\nPet ID is: " + String.valueOf(pet.pe()) +
+                            "\nPet type is: " + String.valueOf(category.getCategoryName()) +
+                            "\nPet Status is: "+ String.valueOf(pet.getPetStatus());
                     textView.setText(text);
                     Picasso.with(MainActivity.this)
                             .load(pet.getPhotoUrl().get(0))

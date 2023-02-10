@@ -2,7 +2,8 @@ package com.example.pet_store;
 
 public class Tag {
 
-    private int tagId;
+    private Integer tagId;
+    private String tagName;
 
     public int getTagId() {
         return tagId;
@@ -12,14 +13,11 @@ public class Tag {
         this.tagId = tagId;
     }
 
-    public String getTagName() {
+    public String getName() {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
+    public void setName(String name) {
+        this.tagName = name;
     }
-
-    private String tagName;
-
 }

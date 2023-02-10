@@ -1,24 +1,22 @@
 package com.example.pet_store;
 
 public class Category {
+    private Integer id;
+    private String Name;
 
-    private int categoryId;
-
-    public int getCategoryId() {
-        return categoryId;
+    public int getId() {
+        return id;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return Name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        Name = name;
     }
-
-    private String categoryName;
 }
